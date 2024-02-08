@@ -1,19 +1,10 @@
 const express = require('express');
+const serverless = require('serverless-http');
 const app = express();
 
-// Define a middleware function
-function myMiddleware(req, res, next) {
-    console.log('This is a middleware function');
-    next();
-}
-
-// Apply the middleware to all routes
-app.use(myMiddleware);
-
-// Define a route
-app.get('/api/data', (req, res) => {
-    res.json({ message: 'Hello from Netlify function!' });
+app.get('/.netlify/functions/expressFunction', (req, res) => {
+    res.json({ message: 'Hello from Netlify function with Express.js!' });
 });
 
-// Export the Express app
-module.exports = app;
+// Export the handler function
+module.exports.handler = serverless(app);
