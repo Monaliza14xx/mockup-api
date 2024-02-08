@@ -6,5 +6,7 @@ app.get('/api/data', (req, res) => {
     res.json({ message: 'Hello from Netlify function!' });
 });
 
-// Export the Express app
-module.exports = app;
+// Export the handler function
+exports.handler = async (event, context) => {
+    return serverless(app)(event, context);
+};
