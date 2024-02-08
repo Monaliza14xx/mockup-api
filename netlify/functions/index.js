@@ -5,4 +5,5 @@ const app = require('./expressFunction');
 const netlifyFunction = express();
 netlifyFunction.use('/.netlify/functions/expressFunction', app);
 
-module.exports = netlifyFunction;
+// Export the handler function
+module.exports.handler = serverless(netlifyFunction);
