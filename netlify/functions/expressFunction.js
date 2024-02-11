@@ -5,6 +5,9 @@ const app = express();
 const baseUrl = '/.netlify/functions/expressFunction';
 // Use the CORS middleware
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 app.get(baseUrl, (req, res) => {
     res.json({ message: 'Hello from Netlify function with Express.js!' });
