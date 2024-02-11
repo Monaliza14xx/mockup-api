@@ -14,7 +14,7 @@ app.get(baseUrl + "/random-number", (req, res) => {
     let random = Math.floor(Math.random() * 100);
     res.json({ message: `Random number: ${random}` });
 });
-app.post(baseUrl + "register", (req, res) => {
+app.post(baseUrl + "/register", (req, res) => {
     const data = req.body;
     const name = data.name;
     const email = data.email;
