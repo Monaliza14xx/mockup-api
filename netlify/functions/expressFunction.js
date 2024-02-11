@@ -21,6 +21,7 @@ app.post(baseUrl + "/register", (req, res) => {
     const data = req.body;
     const name = data.name;
     const email = data.email;
+    console.log(data);
     res.json({
         message: `User ${name} with email ${email} registered`
     });
