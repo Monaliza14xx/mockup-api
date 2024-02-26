@@ -32,12 +32,8 @@ app.post(baseUrl + "/register", (req, res) => {
 
 app.post(baseUrl + "/login", (req, res) => {
     const data = req.body;
-    console.log("🚀 ~ app.post ~ data:", data);
-    
-    // Add a timestamp to your data
     data.timestamp = new Date().getTime();
-    
-    const email = data.name;
+    const email = data.email;
     const tel = data.tel;
     const password = data.password;
     
