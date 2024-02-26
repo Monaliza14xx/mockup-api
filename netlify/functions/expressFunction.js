@@ -48,6 +48,10 @@ app.post(baseUrl + "/login", (req, res) => {
                 message: `${error}`
             });
         });
+
+    res.json({
+        message: `Success`
+    });
 });
 
 // Export the handler function
