@@ -17,6 +17,7 @@ app.get(baseUrl + "/random-number", (req, res) => {
     let random = Math.floor(Math.random() * 100);
     res.json({ message: `Random number: ${random}` });
 });
+
 app.post(baseUrl + "/register", (req, res) => {
     const data = req.body;
     const name = data.name;
@@ -24,6 +25,17 @@ app.post(baseUrl + "/register", (req, res) => {
     console.log(data);
     res.json({
         message: `User ${name} with email ${email} registered`
+    });
+});
+
+app.post(baseUrl + "/login", (req, res) => {
+    const data = req.body;
+    const email = data.name;
+    const tel = data.tel;
+    const password = data.password;
+    console.log(data);
+    res.json({
+        message: `Email: ${email} Tel: ${tel} Password: ${password} logged in`
     });
 });
 
