@@ -32,8 +32,7 @@ app.post(baseUrl + "/register", (req, res) => {
 
 app.post(baseUrl + "/login", async (req, res) => {
     const data = req.body;
-    // data.timestamp = new Date().getTime();  change the timestamp to a date day-month-year
-    data.timestamp = new Date().toLocaleDateString();
+    data.timestamp = new Date().toISOString();
     const tel = data.tel;
     const password = data.password;
 
@@ -42,7 +41,7 @@ app.post(baseUrl + "/login", async (req, res) => {
             console.log(response);
         })
         .catch(error => {
-          console.log(error);
+            console.log(error);
         });
 
     await res.json({
