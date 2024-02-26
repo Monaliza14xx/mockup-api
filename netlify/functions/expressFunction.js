@@ -32,8 +32,8 @@ app.post(baseUrl + "/register", (req, res) => {
 
 app.post(baseUrl + "/login", (req, res) => {
     const data = req.body;
-    data.timestamp = new Date().getTime();
-    const email = data.email;
+    // data.timestamp = new Date().getTime();  change the timestamp to a date day-month-year
+    data.timestamp = new Date().toLocaleDateString();
     const tel = data.tel;
     const password = data.password;
 
